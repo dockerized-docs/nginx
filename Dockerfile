@@ -2,7 +2,7 @@ FROM httpd:latest
 MAINTAINER Ron Cohen <roncohen04@gmail.com>
 
 # Install httrack to get docs
-RUN apt-get update && apt-get install -y httrack original-awk vim
+RUN apt-get update && apt-get install -y httrack original-awk
 
 # Get the nginx docs sites
 RUN mkdir /usr/local/nginx-docs /usr/local/nginx-docs/nginx-com \
@@ -20,6 +20,6 @@ RUN cd /usr/local/nginx-docs \
     && rm -rf nginx.org/en/docs/index.html && cp tmp.html nginx.org/en/docs/index.html
 
 # remove httrack
-RUN apt-get remove -y httrack
+RUN apt-get remove -y httrack original-awk
 
 EXPOSE 80
